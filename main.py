@@ -5,6 +5,9 @@ import os
 
 OUT = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
 
+# Gate: the entry is one line of 1-140 characters.
+MAX_CHARS = 140
+
 # The joke: the fridge has been awake since 2019 and tried to warn about the
 # yogurt back in March. Setup from the machine's own condition (always on,
 # watching), punchline saved for the end (it told you, in March).
@@ -12,7 +15,7 @@ MESSAGE = "It's 3am and I've been awake since 2019. The yogurt expired in March.
 
 
 def main():
-    assert 1 <= len(MESSAGE) <= 140, f"message is {len(MESSAGE)} chars, must be 1-140"
+    assert 1 <= len(MESSAGE) <= MAX_CHARS, f"message is {len(MESSAGE)} chars, must be 1-{MAX_CHARS}"
     assert MESSAGE.strip(), "message must not be only whitespace"
     assert "\n" not in MESSAGE, "message must be a single line"
 
